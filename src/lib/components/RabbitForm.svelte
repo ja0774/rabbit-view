@@ -11,7 +11,22 @@
 	}
 </script>
 
-<input type="text" bind:value={name} class="text-black" />
+<div>
+	<label for="name">Name</label>
+	<input id="name" type="text" bind:value={name} class="input" />
+</div>
+
+<div>
+	<label for="name">Hasenbau</label>
+	<select class="select absolute top-2 right-2 w-[150px]" bind:value={theme}>
+		<option disabled selected>Pick a theme</option>
+		<option value="light">light</option>
+		<option value="dark">dark</option>
+		<option value="cyberpunk">cyberpunk</option>
+		<option value="valentine">valentine</option>
+		<option value="halloween">halloween</option>
+	</select>
+</div>
 
 <button class="btn btn-primary" onclick={addRabbit} disabled={wrongRabbitName || name.length === 0}
 	>Add Rabbit!</button
