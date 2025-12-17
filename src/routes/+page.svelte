@@ -93,4 +93,4 @@
 	</div>
 </dialog>
 
-<button class="btn btn-primary"><a href="/add">New Rabbit!</a></button>
+<a href="/add"><button class="btn btn-primary">New Rabbit!</button></a>
