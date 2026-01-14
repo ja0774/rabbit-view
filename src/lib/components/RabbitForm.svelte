@@ -35,11 +35,6 @@
 	});
 </script>
 
-<div>
-	<label for="name">Name</label>
-	<input id="name" type="text" bind:value={rabbit.name} class="input" />
-</div>
-
 <div class="flex flex-col gap-2">
 	{#if rabbitId}
 		<h1 class="text-lg font-bold">Edit rabbit with ID {rabbitId}</h1>
@@ -50,8 +45,6 @@
 		<span class="label">Name</span>
 		<input type="text" class="grow" bind:value={rabbit.name} />
 	</label>
-
-	<label for="name">Hasenbau</label>
 
 	<div>
 		<label for="select">
