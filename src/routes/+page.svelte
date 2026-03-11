@@ -36,7 +36,6 @@
 </div>
 
 <p>You are not logged in. Please log in to edit rabbits.</p>
-´
 
 {#if authStore.isValid}
 	<!-- unser Template / HTML-Teil der Seite bzw. der Komponente -->
