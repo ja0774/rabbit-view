@@ -17,34 +17,15 @@
 	}
 </script>
 
-<div class="card w-full bg-base-100 shadow-sm">
-	<div class="card-body">
-		<h2 class="card-title">Edit Rabbit</h2>
-		<input
-			type="text"
-			class="input"
-			placeholder="New name for the rabbit (must start with J)"
-			bind:value={newName}
-		/>
-		{#if wrongRabbitName}
-			<p class="text-sm text-red-500">The name must start with J!</p>
-		{/if}
-		<div class="card-actions justify-end">
-			<button class="btn btn-primary" onclick={editRabbit}>Save</button>
-		</div>
-	</div>
-</div>
-
-<p>You are not logged in. Please log in to edit rabbits.</p>
-
-{#if authStore.isValid}
+{#if pb.authStore.isValid}
 	<!-- unser Template / HTML-Teil der Seite bzw. der Komponente -->
 	<h1 class="text-3xl">Our Rabbits</h1>
 
-	<div class="grid w-[200px] grid-cols-[32px_1fr_1fr_32px_32px] items-end">
+	<div class="grid w-[300px] grid-cols-[32px_1fr_1fr_1fr_32px_32px] items-end">
 		<div>Nr.</div>
 		<div>Name</div>
 		<div>Hasenbau</div>
+		<div>Augenfarbe</div>
 		<div></div>
 		<div></div>
 
@@ -53,6 +34,11 @@
 			<div class="pr-3">{rabbit.name}</div>
 			{#if rabbit.expand.rabbithole}
 				<div class="pr-3">{rabbit.expand.rabbithole.name}</div>
+			{:else}
+				<div></div>
+			{/if}
+			{#if rabbit.expand.eyecolour}
+				<div class="pr-3">{rabbit.expand.eyecolour.name}</div>
 			{:else}
 				<div></div>
 			{/if}
