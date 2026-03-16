@@ -1,8 +1,9 @@
 <script>
 	import '../app.css';
-	import { store } from '$lib/store.svelte';
+	import { pb, store } from '$lib/store.svelte.js';
 	import favicon from '$lib/assets/favicon.svg';
 	import { browser } from '$app/environment';
+	import { goto } from '$app/navigation';
 
 	let { children } = $props();
 	let theme = $state('halloween');
@@ -10,12 +11,14 @@
 	function saveTheme() {
 		localStorage.setItem('theme', theme);
 	}
-
 	// unser "Konstruktor" (lifecycle hook) - läuft jedesmal, wenn die Seite bzw. die Komponente geladen wird:
 	$effect(() => {
-		if (browser) {
-			$inspect('🐰: ', store.rabbits);
+		if (!pb.authStore.isValid) {
+			goto('/auth');
 		}
+		store.listRabbits();
+		if (localStorage.getItem('theme')) theme = localStorage.getItem('theme');
+		$inspect('🐰: ', store.rabbits);
 	});
 </script>
 
@@ -35,7 +38,7 @@
 			<option value="halloween" onclick={saveTheme}>halloween</option>
 		</select>
 	</nav>
-	<main class="justify-cener flex min-h-screen flex-col items-center">
+	<main class="flex min-h-screen flex-col items-center justify-center">
 		{@render children?.()}
 	</main>
 </div>
